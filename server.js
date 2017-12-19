@@ -8,7 +8,7 @@ const UsersController = require('./lib/controllers/usersController')
 
 app.set('port', process.env.PORT || 3000)
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
@@ -22,6 +22,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/v1/users/:id', UsersController.getUser)
+
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
