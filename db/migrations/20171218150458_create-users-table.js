@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     last_name TEXT,
     cross_street1 TEXT,
     cross_street2 TEXT,
-    email TEXT,
+    email TEXT UNIQUE,
     phone_number TEXT,
     street TEXT,
     city TEXT,

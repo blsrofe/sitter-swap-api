@@ -5,6 +5,7 @@ const environment = process.env.NODE_ENV || 'development'
 const configuration = require('./knexfile')[environment]
 const database = require('knex')(configuration)
 const UsersController = require('./lib/controllers/usersController')
+const DogsController = require('./lib/controllers/dogsController')
 
 app.set('port', process.env.PORT || 3000)
 app.use(bodyParser.json())
@@ -22,7 +23,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/v1/users/:id', UsersController.getUser)
-
+app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {

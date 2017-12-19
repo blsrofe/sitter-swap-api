@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
   return knex.raw('TRUNCATE user_dogs RESTART IDENTITY')
   .then(function() {
