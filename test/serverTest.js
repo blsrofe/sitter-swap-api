@@ -110,4 +110,40 @@ describe('Server', () => {
      })
    })
   })
+  describe('GET /api/v1/users/:id/dogs', () => {
+    beforeEach((done) => {
+      database.raw(
+        'INSERT INTO users (first_name, last_name, cross_street1, cross_street2, email, phone_number, street, city, state, zip, residence_type, fenced_yard, children_under_two, other_children, cats, profile, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        ["John", "Doe", "Jordan Ave", "Broncos Parkway", "john@gmail.com", "303-342-5050", "231 Somewhere Road", "Parker", "CO", 80134, "house", true, 0, 1, false, "This is John's really cool profile.", new Date])
+      .then(() => { done() })
+    })
+
+    afterEach((done) => {
+      database.raw('TRUNCATE users RESTART IDENTITY CASCADE')
+      .then(() => { done() })
+    })
+
+    it('should return 404 if resource is not found', (done) => {
+      this.request.get('/api/v1/users/10000/dogs', (error, response) => {
+        if (error) { done(error) }
+        assert.equal(response.statusCode, 404)
+        done()
+      })
+    })
+
+    it('should return an object for each dog', (done) => {
+      this.request.get('/api/v1/users/1/dogs', (error, response) => {
+        if (error) { done(error) }
+
+        const dog1 = {}
+        const dog2 = {}
+
+        let parsedDogs = JSON.parse(response.body)
+
+        assert.equal(parsedUser.id, id)
+        assert.ok(parsedUser.created_at)
+        done()
+      })
+    })
+   })
  })
