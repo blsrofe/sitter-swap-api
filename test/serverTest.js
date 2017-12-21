@@ -46,8 +46,8 @@ describe('Server', () => {
  describe('GET /api/v1/users/:id', () => {
    beforeEach((done) => {
      database.raw(
-       'INSERT INTO users (first_name, last_name, cross_street1, cross_street2, email, phone_number, street, city, state, zip, residence_type, fenced_yard, children_under_two, other_children, cats, profile, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-       ["John", "Doe", "Jordan Ave", "Broncos Parkway", "john@gmail.com", "303-342-5050", "231 Somewhere Road", "Parker", "CO", 80134, "house", true, 0, 1, false, "This is John's really cool profile.", new Date])
+       'INSERT INTO users (username, password_digest, first_name, last_name, cross_street1, cross_street2, email, phone_number, street, city, state, zip, residence_type, fenced_yard, children_under_two, other_children, cats, profile, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+       ["jdoe", "password", "John", "Doe", "Jordan Ave", "Broncos Parkway", "john@gmail.com", "303-342-5050", "231 Somewhere Road", "Parker", "CO", 80134, "house", true, 0, 1, false, "This is John's really cool profile.", new Date])
      .then(() => { done() })
    })
 
@@ -78,12 +78,12 @@ describe('Server', () => {
        const street = "231 Somewhere Road"
        const city = "Parker"
        const state = "CO"
-       const zip = 80134
+       const zip = "80134"
        const residence_type = "house"
-       const fenced_yard = true
+       const fenced_yard = "true"
        const children_under_two = 0
        const other_children = 1
-       const cats = false
+       const cats = "false"
        const profile = "This is John's really cool profile."
 
        let parsedUser = JSON.parse(response.body)
