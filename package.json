@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "sitter-swap-api",
   "version": "1.0.0",
   "description": "Backend for sitter swap app",
@@ -23,3 +22,4 @@
     "nodemon": "^1.13.3",
     "request": "^2.83.0"
   }
+}
