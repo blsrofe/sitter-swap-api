@@ -23,7 +23,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/v1/users/:id', UsersController.getUser)
-app.post('/api/v1/users/:id/dogs', DogsController.postDog)
+app.post('/api/v1/dogs', DogsController.postDog)
 app.post('/api/v1/users', UsersController.postUser)
 
 if (!module.parent) {
