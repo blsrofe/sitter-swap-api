@@ -2,6 +2,7 @@
 exports.up = function(knex, Promise) {
   let createQuery = `CREATE TABLE dogs(
     id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT,
     breed TEXT,
     age INT,
     sex TEXT,
