@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     age INT,
     sex TEXT,
     notes TEXT,
-    owner_id INT REFERENCES users (id),
+    owner_id INT REFERENCES users (id) on delete cascade on update cascade,
     created_at TIMESTAMP
   )`
   return knex.raw(createQuery)
