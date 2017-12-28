@@ -24,7 +24,7 @@ app.get('/', (request, response) => {
 
 app.get('/api/v1/users/:id', UsersController.getUser)
 app.post('/api/v1/dogs', DogsController.postDog)//Unhandled rejection Error: Can't set headers after they are sent.
-app.post('/api/v1/users', UsersController.postUser)
+app.post('/api/v1/users', UsersController.signUp)
 app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
 
 if (!module.parent) {
