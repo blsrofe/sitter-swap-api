@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     end_date DATE,
     num_nights INT,
     notes TEXT,
+    status TEXT,
     user_id INT REFERENCES users (id) on delete cascade on update cascade,
     created_at TIMESTAMP
   )`
