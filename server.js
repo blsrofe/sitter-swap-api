@@ -29,6 +29,7 @@ app.post('/api/v1/users', UsersController.signUp)
 app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
 app.post('/api/v1/signin', UsersController.signIn)
 app.post('/api/v1/trips', TripsController.postTrip)
+app.get('/api/v1/trips', TripsController.getActiveTrips)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
