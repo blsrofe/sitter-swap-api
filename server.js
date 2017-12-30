@@ -6,6 +6,7 @@ const configuration = require('./knexfile')[environment]
 const database = require('knex')(configuration)
 const UsersController = require('./lib/controllers/usersController')
 const DogsController = require('./lib/controllers/dogsController')
+const TripsController = require('./lib/controllers/tripsController')
 
 app.set('port', process.env.PORT || 3000)
 app.use(bodyParser.json())
@@ -27,6 +28,7 @@ app.post('/api/v1/dogs', DogsController.postDog)//Unhandled rejection Error: Can
 app.post('/api/v1/users', UsersController.signUp)
 app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
 app.post('/api/v1/signin', UsersController.signIn)
+app.post('/api/v1/trips', TripsController.postTrip)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
