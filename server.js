@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const jwt = require('express-jwt')
+const jwks = require('jwks-rsa')
 const environment = process.env.NODE_ENV || 'development'
 const configuration = require('./knexfile')[environment]
 const database = require('knex')(configuration)
@@ -23,7 +25,19 @@ app.get('/', (request, response) => {
   response.send('API for SitterSwap')
 })
 
-app.get('/api/v1/users/:id', UsersController.getUser)
+const authCheck = jwt({
+  secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: "https://sitter-swap.auth0.com/.well-known/jwks.json"
+    }),
+    audience: 'https://sitter-swap.com',
+    issuer: "https://sitter-swap.auth0.com/",
+    algorithms: ['RS256']
+})
+
+app.get('/api/v1/users/:id', authCheck, UsersController.getUser)
 app.post('/api/v1/dogs', DogsController.postDog)//Unhandled rejection Error: Can't set headers after they are sent.
 app.post('/api/v1/users', UsersController.signUp)
 app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
