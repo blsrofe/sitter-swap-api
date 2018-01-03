@@ -52,7 +52,7 @@ app.post('/api/v1/trips', TripsController.postTrip)
 app.get('/api/v1/trips', TripsController.getActiveTrips)
 app.get('/api/v1/users-public/:id', UsersController.getPublic)
 app.delete('/api/v1/dogs/:id', DogsController.deleteDog)
-app.put('/api/v1/users/:id/logout', UsersController.logout)
+app.put('/api/v1/logout', UsersController.logout)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
