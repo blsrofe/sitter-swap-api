@@ -25,6 +25,10 @@ app.get('/', (request, response) => {
   response.send('API for SitterSwap')
 })
 
+setInterval(function() {
+    app.get("http://sitter-swap.api/herokuapp.com");
+}, 300000)
+
 const authCheck = jwt({
   secret: jwks.expressJwtSecret({
         cache: true,
@@ -48,6 +52,7 @@ app.post('/api/v1/trips', TripsController.postTrip)
 app.get('/api/v1/trips', TripsController.getActiveTrips)
 app.get('/api/v1/users-public/:id', UsersController.getPublic)
 app.delete('/api/v1/dogs/:id', DogsController.deleteDog)
+app.put('/api/v1/users/:id/logout', UsersController.logout)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
