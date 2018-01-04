@@ -29,19 +29,6 @@ setInterval(function() {
     app.get("http://sitter-swap.api/herokuapp.com");
 }, 300000)
 
-const authCheck = jwt({
-  secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: "https://sitter-swap.auth0.com/.well-known/jwks.json"
-    }),
-    audience: 'https://sitter-swap.com',
-    issuer: "https://sitter-swap.auth0.com/",
-    algorithms: ['RS256']
-})
-
-// app.get('/api/v1/users/:id', authCheck, UsersController.getUser)
 app.get('/api/v1/users/:id', UsersController.getUser)
 app.get('/api/v1/users/:id/requests', UsersController.getCurrentRequests)
 app.post('/api/v1/dogs', DogsController.postDog)
