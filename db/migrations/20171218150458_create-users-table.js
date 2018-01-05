@@ -2,8 +2,6 @@
 exports.up = function(knex, Promise) {
   let createQuery = `CREATE TABLE users(
     id SERIAL PRIMARY KEY NOT NULL,
-    username TEXT UNIQUE,
-    password_digest TEXT,
     token TEXT,
     first_name TEXT,
     last_name TEXT,
