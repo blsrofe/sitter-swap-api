@@ -45,6 +45,8 @@ app.put('/api/v1/logout', UsersController.logout)
 app.get('/api/v1/account', UsersController.account)
 app.get('/api/v1/trip-owner/:id', TripsController.getOwner)
 app.post('/api/v1/messages', MessagesController.postMessage)
+app.get('/api/v1/responses/:id', MessagesController.getResponses)
+
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
