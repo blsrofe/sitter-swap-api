@@ -41,6 +41,7 @@ app.get('/api/v1/users-public/:id', UsersController.getPublic)
 app.delete('/api/v1/dogs/:id', DogsController.deleteDog)
 app.put('/api/v1/logout', UsersController.logout)
 app.get('/api/v1/account', UsersController.account)
+app.get('/api/v1/trip-owner/:id', TripsController.getOwner)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
