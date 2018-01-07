@@ -48,6 +48,8 @@ app.get('/api/v1/account', UsersController.account)
 app.get('/api/v1/trip-owner/:id', TripsController.getOwner)
 app.post('/api/v1/messages', MessagesController.postMessage)
 app.get('/api/v1/responses/:id', MessagesController.getResponses)
+app.get('/api/v1/received-messages/:id', MessagesController.received)
+app.get('/api/v1/sent-messages/:id', MessagesController.sent)
 
 
 if (!module.parent) {
