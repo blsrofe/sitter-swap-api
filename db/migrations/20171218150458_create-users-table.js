@@ -19,6 +19,7 @@ exports.up = function(knex, Promise) {
     other_children TEXT,
     cats TEXT,
     profile TEXT,
+    paws TEXT,
     created_at TIMESTAMP
   )`
   return knex.raw(createQuery)
