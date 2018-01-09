@@ -34,6 +34,7 @@ setInterval(function() {
 app.get('/api/v1/users/:id', UsersController.getUser)
 app.get('/api/v1/users/:id/requests', UsersController.getCurrentRequests)
 app.get('/api/v1/users/:id/accepted', UsersController.getAcceptedRequests)
+app.get('/api/v1/users/:id/completed', UsersController.getCompletedRequests)
 app.post('/api/v1/dogs', DogsController.postDog)
 app.post('/api/v1/users', UsersController.signUp)
 app.get('/api/v1/users/:id/dogs', DogsController.getDogs)
