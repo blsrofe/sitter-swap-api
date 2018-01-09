@@ -50,7 +50,7 @@ app.post('/api/v1/messages', MessagesController.postMessage)
 app.get('/api/v1/responses/:id', MessagesController.getResponses)
 app.get('/api/v1/received-messages/:id', MessagesController.received)
 app.get('/api/v1/sent-messages/:id', MessagesController.sent)
-
+app.put('/api/v1/users/:id/paws', UsersController.updatePaws)
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
